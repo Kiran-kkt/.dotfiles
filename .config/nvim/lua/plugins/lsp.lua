@@ -17,15 +17,17 @@ return {
             },
           },
         },
-        ruff = {
-          -- Ruff configuration (optional)
-        },
+        ruff = {},
       },
       setup = {
-        ruff = function()
-          require("lazyvim.util").lsp.on_attach(function(client, _)
-            client.server_capabilities.hoverProvider = false
-          end, "ruff")
+        ruff = function(_, opts)
+          local lspconfig = require("lspconfig")
+          lspconfig.ruff.setup(vim.tbl_deep_extend("force", opts, {
+            on_attach = function(client, bufnr)
+              client.server_capabilities.hoverProvider = false
+            end,
+          }))
+          return true
         end,
       },
     },
