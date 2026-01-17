@@ -83,6 +83,7 @@ plugins=(
         asdf
         autojump
         fzf
+        fast-syntax-highlighting
         git
         starship
         ssh-agent
@@ -134,5 +135,13 @@ export PATH="$PATH:/Users/kiran_kkt/.cache/lm-studio/bin"
 # Setup asdf puglin
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-# Pyenv virtualenv
-eval "$(pyenv virtualenv-init -)"
+# Setup fzf plugin
+export FZF_BASE=/path/to/fzf/install/dir
+
+# Setup Nodejs nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Setup Claude, uv and uvx or any other user applications
+export PATH="$HOME/.local/bin:$PATH"
